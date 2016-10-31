@@ -18,20 +18,22 @@
     <div class="container-nav">
       <nav id="menu">
         <ul>
-          <li class="category-link">
-            <a href="#">New in</a>
-          </li>
-          <li class="category-link"><a href="">Must have</a></li>
+          <% Collection.all.each do |c| %>
+            <li class="category-link">
+              <%= link_to c.name, collection_path(c) %>
+            </li>
+          <% end %>
           <li class="category-link">
             <%= link_to 'Browse', products_path %>
-            <ul>
-              <li class="category-link"><a href=""></a>Outware</li>
-              <li class="category-link"><a href=""></a>Bomber</li>
-              <li class="category-link"><a href=""></a>Jacket</li>
-            </ul>
-          </li>
-          <li class="category-link">
-            <a href="">Sales</a>
+            <% if current_page?(products_path) %>
+              <ul style="padding-left: 20px;">
+                <% Category.all.each do |c| %>
+                  <li class="category-link">
+                    <%= link_to c.name, products_path(category: c.id) %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </li>
         </ul>
       </nav>

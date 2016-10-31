@@ -1,5 +1,7 @@
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Rubik:300');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
 
 
 html,
@@ -17,9 +19,23 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1.02em;
 }
 
+.title {
+  font-family: 'Special Elite', cursive;
+  font-size: 50px;
+}
+
 .header {
   height: 33px;
   padding: 30px 0px 90px 0;
+  position: fixed;
+  z-index: 9999;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+}
+
+.content {
+  padding-top: 10%;
 }
 
 .container-nav {
@@ -71,12 +87,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .products {
-  margin-left: 10%;
+
 }
 
 .product {
   padding-right: 0px;
-  padding-left: 20px;
+  padding-left: 0px;
+}
+
+.product + .product {
+  margin-left: 10px;
 }
 
 .product-detail {
@@ -91,8 +111,13 @@ h1, h2, h3, h4, h5, h6 {
 
 a.pure {
   color: inherit;
+  text-decoration: none;
 }
 
 a.pure:hover {
   text-decoration: none;
+}
+
+.collection-detail {
+    text-align: center;
 }
