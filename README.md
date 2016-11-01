@@ -6,8 +6,14 @@
 3. `rails db:migrate`
 4. `rails db:seed`
 
+## Run test
+In the console: `bundle exec guard` to automatically run test every changes.
+
 ## **User story**
 
 * [ ] User can see the homepage with navbar and some trending products
 * [ ] User can see the details of each products
 * [ ] A product comes with a number of size and colour
+
+### Docs
+[RSpec][https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs]
