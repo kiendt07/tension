@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .content {
-  padding-top: 10%;
+  padding-top: 70px;
 }
 
 .container-nav {
@@ -122,6 +122,10 @@ a.pure:hover {
 
 a.active::after{
   content: '  <';
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .collection-detail {

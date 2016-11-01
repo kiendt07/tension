@@ -31,7 +31,7 @@
             </li>
           <% end %>
           <li class="category-link">
-            <%= link_to 'Browse', products_path, class: "big-link purep #{ current_class?(products_path) }" %>
+            <%= link_to 'Browse', products_path, class: "big-link pure #{ current_class?(products_path) }" %>
             <% if current_page?(products_path) %>
               <ul style="padding-left: 20px;">
                 <% Category.all.each do |c| %>
