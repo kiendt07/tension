@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+['Outerwear', 'Jackets', 'Bombers', 'Blazers', 'Suits', 'Shirts', 'Jeans', 'Shoes'].each do |c|
+  Category.create name: c
+end
+
+%w(Gucci Zara Puma Nike Armani Brioni).each do |b|
+  Brand.create name: b
+end

@@ -27,16 +27,16 @@
         <ul>
           <% Collection.all.each do |c| %>
             <li class="category-link">
-              <%= link_to c.name, collection_path(c) %>
+              <%= link_to c.name, collection_path(c), class: "big-link pure #{ current_class?(collection_path(c))}" %>
             </li>
           <% end %>
           <li class="category-link">
-            <%= link_to 'Browse', products_path %>
+            <%= link_to 'Browse', products_path, class: "big-link purep #{ current_class?(products_path) }" %>
             <% if current_page?(products_path) %>
               <ul style="padding-left: 20px;">
                 <% Category.all.each do |c| %>
                   <li class="category-link">
-                    <%= link_to c.name, products_path(category: c.id) %>
+                    <%= link_to c.name, products_path(category: c.id), class: "pure #{ current_class?(products_path(category: c.id))}" %>
                   </li>
                 <% end %>
               </ul>
