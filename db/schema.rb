@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031214943) do
+ActiveRecord::Schema.define(version: 20161101204524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,43 @@ ActiveRecord::Schema.define(version: 20161031214943) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "payment_id"
+    t.datetime "ordered_at"
+    t.datetime "required_at"
+    t.datetime "shipped_at"
+    t.datetime "paid_at"
+    t.decimal  "discount",    precision: 12, scale: 2
+    t.integer  "status_id"
+    t.string   "shipper_id"
+    t.decimal  "subtotal",    precision: 12, scale: 2
+    t.decimal  "tax",         precision: 12, scale: 2
+    t.decimal  "shipping",    precision: 12, scale: 2
+    t.decimal  "total",       precision: 12, scale: 2
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_units", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "color"
+    t.string   "size"
+    t.integer  "quantity"
+    t.boolean  "available"
+    t.decimal  "price",      precision: 12, scale: 2
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["product_id"], name: "index_product_units_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.decimal  "price",       precision: 12, scale: 2
@@ -48,6 +85,12 @@ ActiveRecord::Schema.define(version: 20161031214943) do
     t.datetime "updated_at",                           null: false
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

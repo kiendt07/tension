@@ -15,5 +15,7 @@ In the console: `bundle exec guard` to automatically run test every changes.
 * [ ] User can see the details of each products
 * [ ] A product comes with a number of size and colour
 
+* [ ] A product has multiple unit types that have different color, size and price
+
 ### Docs
 [RSpec][https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs]

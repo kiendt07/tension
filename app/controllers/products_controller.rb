@@ -8,5 +8,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @product_unit = @product.product_units.where('size = ? AND color = ?', params[:size], params[:color]).first;
   end
 end

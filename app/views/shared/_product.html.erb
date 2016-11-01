@@ -3,15 +3,43 @@
 </div>
 <div class="col-sm-6 product-detail">
   <h3 class="product-name"><%= product.name %></h3>
-  <p class="product-price"><%= number_to_currency(product.price, unit: 'VND ', precision: 0) %></p>
+  <% if unit %>
+    <p class="product-price"><%= number_to_currency(unit.price, unit: 'VND ', precision: 0) %></p>
+  <% else %>
+    <p class="product-price">0</p>
+  <% end %>
   <p>
-    <% @product.size_set.each do |size| %>
-      <span class="product-size"><%= size %></span>
-    <% end %>
+    <span>
+      <% @product.size_set.each do |size| %>
+          <%= link_to size, product_path(product, size: size, color: params[:color]),
+          class: "product-size #{'active' if current_page?(product_path(product, size: size, color: params[:color]))}" %>
+      <% end %>
+    </span>
+
+    <span>
+      <% @product.color_set.each do |color| %>
+          <%= link_to color, product_path(product, size: params[:size], color: color),
+          class: "product-size #{'active' if current_page?(product_path(product, size: params[:size], color: color))}" %>
+      <% end %>
+    </span>
   </p>
+
+  <% if unit %>
+    <p class="product-quantity">available</p>
+  <% else %>
+    <p class="product-quantity">not available</p>
+  <% end %>
   <div class="product-images">
     <% product.img_set.each do |img| %>
       <%= image_tag img, style: 'height: 200px' %>
+    <% end %>
+  </div>
+
+  <div class="place-order">
+    <%= form_tag cart_path, method: 'post', class: 'form-inline' do %>
+      <% default_quantity = unit.nil? ? 0 : 1 %>
+      <%= number_field_tag :quantity, default_quantity ,class: 'form-control form-group' %>
+      <%= submit_tag 'Add to cart', class: "btn btn-primary #{'disabled' if unit.nil?}" %>
     <% end %>
   </div>
 </div>

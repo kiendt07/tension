@@ -19,6 +19,24 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1.02em;
 }
 
+a {
+  color: #000;
+}
+
+a.pure {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.pure:hover {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+// Layout
 .title {
   font-family: 'Special Elite', cursive;
   font-size: 50px;
@@ -47,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 3%;
 }
 
-
+// Navbar
 #menu {
   text-transform: uppercase;
 }
@@ -57,6 +75,15 @@ h1, h2, h3, h4, h5, h6 {
   list-style-type: none;
 }
 
+#menu a.active::after{
+  content: '  <';
+}
+
+#menu a {
+  color: #333;
+}
+
+// Home
 .carousel,
 .item,
 .active {
@@ -79,6 +106,8 @@ h1, h2, h3, h4, h5, h6 {
     -o-background-size: cover;
 }
 
+// Product
+
 .card {
   border: none;
 }
@@ -87,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   letter-spacing: 5px;
   color: #2980b9;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .products {
@@ -109,25 +138,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #000;
 }
 
-a {
-  color: #34495e;
+.product-quantity {
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
-a.pure {
-  color: inherit;
-  text-decoration: none;
-}
-
-a.pure:hover {
-  text-decoration: none;
-}
-
-a.active::after{
-  content: '  <';
-}
-
-a:hover {
-  text-decoration: none;
+a.product-size.active {
+  color: #2980b9;
 }
 
 .collection-detail {
@@ -141,4 +158,8 @@ a:hover {
 
 .product img {
   max-width: 100%;
+}
+
+.place-order {
+  margin-top: 20px;
 }
