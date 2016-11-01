@@ -1,17 +1,18 @@
 <div class="products">
-  <% products.each do |product| %>
-    <div class="col-sm-6 product">
-        <a href="<%= product_path(product) %>">
-          <%= image_tag product.img_set[0], style: 'width: 100%' %>
-        </a>
+  <div class="row">
+    <% products.each do |product| %>
+      <div class="col-sm-6 product">
+          <a href="<%= product_path(product) %>">
+            <%= image_tag product.img_set[0], style: 'width: 100%' %>
+          </a>
 
-        <div class="card card-block" style="text-align: center">
-          <%= link_to product.name, product_path(product), class: 'product-name' %>
-          <p class="product-price">
-            <%= number_to_currency(product.price, unit: 'VND ', precision: 0) %>
-          </p>
-        </div>
+          <div class="card card-block" style="text-align: center">
+            <%= link_to product.name, product_path(product), class: 'product-name' %>
+            <p class="product-price">
+              <%= number_to_currency(product.price, unit: 'VND ', precision: 0) %>
+            </p>
+          </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
