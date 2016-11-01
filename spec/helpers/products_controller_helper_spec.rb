@@ -11,5 +11,14 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ProductsControllerHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'index' do
+    it 'render no product when there is no product to render'
+    it 'render 1 product when there is one product to render'
+  end
+
+  describe 'show' do
+    it 'should not render the product when the id param is invalid'
+    it 'should not render the product when the is no id param'
+    it 'render the product when a valid id is provided'
+  end
 end
