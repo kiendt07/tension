@@ -36,10 +36,13 @@
   </div>
 
   <div class="place-order">
-    <%= form_tag cart_path, method: 'post', class: 'form-inline' do %>
-      <% default_quantity = unit.nil? ? 0 : 1 %>
-      <%= number_field_tag :quantity, default_quantity ,class: 'form-control form-group' %>
-      <%= submit_tag 'Add to cart', class: "btn btn-primary #{'disabled' if unit.nil?}" %>
+    <%= form_tag order_lines_path, method: 'post', remote: true, class: 'form-inline' do %>
+      <% if !unit.nil? %>
+        <% default_quantity = unit.nil? ? 0 : 1 %>
+        <%= number_field_tag :quantity, default_quantity ,class: 'form-control form-group' %>
+        <%= hidden_field_tag 'unit_id', unit.id %>
+      <% end %>
+      <%= submit_tag 'Add to cart', class: "btn btn-primary #{'btn-danger disabled' if unit.nil?}" %>
     <% end %>
   </div>
 </div>

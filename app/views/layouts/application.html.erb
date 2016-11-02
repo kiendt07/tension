@@ -20,31 +20,46 @@
       <h1 class="title">
         <%= link_to 'Tension', root_path, class: 'pure' %>
       </h1>
+      <div class="user-function">
+        <% if user_signed_in? %>
+          <h3 class="cart-info">
+            <%= render 'shared/cart_info' %>
+          </h3>
+          <%= link_to 'Log out', logout_path, class: 'nav-link' %>
+        <% else %>
+          <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
+        <% end %>
+      </div>
     </div>
 
-    <div class="container-nav">
-      <nav id="menu">
-        <ul>
-          <% Collection.all.each do |c| %>
-            <li class="category-link">
-              <%= link_to c.name, collection_path(c), class: "big-link pure #{ current_class?(collection_path(c))}" %>
-            </li>
-          <% end %>
-          <li class="category-link">
-            <%= link_to 'Browse', products_path, class: "big-link pure #{ current_class?(products_path) }" %>
-            <% if current_page?(products_path) %>
-              <ul style="padding-left: 20px;">
-                <% Category.all.each do |c| %>
-                  <li class="category-link">
-                    <%= link_to c.name, products_path(category: c.id), class: "pure #{ current_class?(products_path(category: c.id))}" %>
-                  </li>
-                <% end %>
-              </ul>
+    <% if !current_page?(new_user_session_path)
+          !current_page?(new_user_registration_path)
+          !current_page?(cart_path) %>
+
+      <div class="container-nav">
+        <nav id="menu">
+          <ul>
+            <% Collection.all.each do |c| %>
+              <li class="category-link">
+                <%= link_to c.name, collection_path(c), class: "big-link pure #{ current_class?(collection_path(c))}" %>
+              </li>
             <% end %>
-          </li>
-        </ul>
-      </nav>
-    </div>
+            <li class="category-link">
+              <%= link_to 'Browse', products_path, class: "big-link pure #{ current_class?(products_path) }" %>
+              <% if current_page?(products_path) %>
+                <ul style="padding-left: 20px;">
+                  <% Category.all.each do |c| %>
+                    <li class="category-link">
+                      <%= link_to c.name, products_path(category: c.id), class: "pure #{ current_class?(products_path(category: c.id))}" %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    <% end %>
 
     <div class="content">
       <%= yield %>

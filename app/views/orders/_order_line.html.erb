@@ -1,0 +1,10 @@
+<tr>
+  <td><%= line.unit.product.id %></td>
+  <td>
+    <%= link_to line.unit.product.name, product_path(line.unit.product, size: line.unit.size, color: line.unit.color), class: 'product-name' %>
+  </td>
+  <td class="product-price">
+    <%= number_to_currency(line.unit.price, unit: 'VND ', precision: 0) %>
+  </td>
+  <td><%= line.quantity %></td>
+</tr>

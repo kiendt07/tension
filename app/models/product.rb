@@ -9,4 +9,6 @@ class Product < ApplicationRecord
   has_many :units
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
+
+  # default_scope { where(available: true) }
 end
