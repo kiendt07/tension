@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161102011041) do
     t.decimal  "total",       precision: 12, scale: 2
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["status_id"], name: "index_orders_on_status_id", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 

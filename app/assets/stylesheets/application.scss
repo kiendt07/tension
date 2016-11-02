@@ -3,8 +3,6 @@
 @import url('https://fonts.googleapis.com/css?family=Rubik:300');
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
-
-
 html,
 body {
     height: 100%;
@@ -57,11 +55,16 @@ a:hover {
 }
 
 .user-function {
-  position: absolute;
-  top: 120px;
-  color: #fff;
+  position: fixed;
+  top: 40px;
+  right: 0;
+  z-index: 99999;
+  width: 100px;
 }
 
+.user-function a {
+  color: #fff;
+}
 
 .content {
   padding-top: 100px;
@@ -72,6 +75,19 @@ a:hover {
   top: 33%;
   z-index: 999999;
   padding-left: 3%;
+}
+
+// Login / Sign up form
+.center-form {
+  margin-top: 50px;
+  text-align: center;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.center-form input {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 // Navbar
@@ -161,7 +177,7 @@ a.product-size.active {
 }
 
 .big-link {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
 }
 

@@ -7,4 +7,6 @@ class Status < ApplicationRecord
   FULLFILLED    = self.find(6)
   CANCELED      = self.find(7)
   FAILED        = self.find(8)
+
+  has_many :orders
 end

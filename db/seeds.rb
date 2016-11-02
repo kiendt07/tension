@@ -109,3 +109,5 @@ Collection.create(
     bootstrap_class: 'primary'
   )
 end
+
+Status.first.update(bootstrap_class: 'warning')

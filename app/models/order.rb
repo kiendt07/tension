@@ -5,8 +5,6 @@ class Order < ApplicationRecord
 
   has_many :order_lines
 
-  before_create :set_initial_status
-  before_save :set_initial_status
   before_save :update_subtotal
 
 

@@ -12,10 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if current_order.id == params[:id]
-      current_order.update(status: Status::PENDING)
-    end
-    raise 'aa'
+    current_order.update(status: Status::PENDING)
     redirect_to cart_path
   end
 end

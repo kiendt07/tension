@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.datetime :shipped_at
       t.datetime :paid_at
       t.decimal :discount, :precision => 12, :scale => 2
-      t.integer :status_id
+      t.integer :status_id, index: true, foreign_key: true
       t.string :shipper_id
       t.decimal :subtotal, :precision => 12, :scale => 2
       t.decimal :tax, :precision => 12, :scale => 2
