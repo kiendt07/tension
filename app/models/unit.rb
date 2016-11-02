@@ -1,4 +1,4 @@
-class ProductUnit < ApplicationRecord
+class Unit < ApplicationRecord
   belongs_to :product
   validates :color, presence: true, uniqueness: {scope: :size}
   validates :size, presence: true
