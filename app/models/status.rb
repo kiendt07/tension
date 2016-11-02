@@ -1,12 +1,11 @@
 class Status < ApplicationRecord
-  INPROGRESS    = self.find(1)
-  PENDING       = self.find(2)
-  PROCESSING    = self.find(3)
-  SHIPPING      = self.find(4)
-  RECEIVED      = self.find(5)
-  FULLFILLED    = self.find(6)
-  CANCELED      = self.find(7)
-  FAILED        = self.find(8)
-
+  INPROGRESS    = create(name: 'In progress', bootstrap_class: 'info')
+  PENDING       = create(name: 'Pending', bootstrap_class: 'warning')
+  PROCESSING    = create(name: 'Processing', bootstrap_class: 'primary')
+  SHIPPING      = create(name: 'Shipping', bootstrap_class: 'success')
+  RECEIVED      = create(name: 'Received', bootstrap_class: 'success')
+  FULLFILLED    = create(name: 'Fullfilled', bootstrap_class: 'success')
+  CANCELED      = create(name: 'Canceled', bootstrap_class: 'danger')
+  FAILED        = create(name: 'Failed', bootstrap_class: 'danger')
   has_many :orders
 end

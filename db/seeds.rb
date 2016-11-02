@@ -102,12 +102,15 @@ Collection.create(
   product_set: ['1', '4', '5'],
 )
 
+Unit.create product: Product.first, color: 'Black', size: 'L', quantity: 10, price: 2499000.00
 
-['In Progress', 'Pending', 'Processing', 'Shipping', 'Received', 'Fullfilled', 'Canceled', 'Failed'].each do |s|
-  Status.create(
-    name: s,
-    bootstrap_class: 'primary'
-  )
-end
+Unit.create product: Product.last, color: 'Brown', size: '30', quantity: 10, price: 2499000.00
 
-Status.first.update(bootstrap_class: 'warning')
+# ['In Progress', 'Pending', 'Processing', 'Shipping', 'Received', 'Fullfilled', 'Canceled', 'Failed'].each do |s|
+#   Status.create(
+#     name: s,
+#     bootstrap_class: 'primary'
+#   )
+# end
+# Status.declare_constants
+# Status.first.update(bootstrap_class: 'warning')
