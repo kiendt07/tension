@@ -24,6 +24,15 @@ Product.create(
   category_id: 2
 )
 
+Unit.create(
+  product: Product.first,
+  size: 'L',
+  color: 'Light grey',
+  quantity: 5,
+  available: true,
+  price: 2499000.00
+)
+
 
 Product.create(
   name: 'MILITARY STYLE COAT',
@@ -92,3 +101,11 @@ Collection.create(
   description: 'Best items',
   product_set: ['1', '4', '5'],
 )
+
+
+['In Progress', 'Pending', 'Processing', 'Shipping', 'Received', 'Fullfilled', 'Canceled', 'Failed'].each do |s|
+  Status.create(
+    name: s,
+    bootstrap_class: 'primary'
+  )
+end
