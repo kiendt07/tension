@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(version: 20161102011041) do
     t.datetime "shipped_at"
     t.datetime "paid_at"
     t.decimal  "discount",    precision: 12, scale: 2
-    t.integer  "status_id"
+    t.integer  "statuses",                             default: 0
     t.string   "shipper_id"
     t.decimal  "subtotal",    precision: 12, scale: 2
     t.decimal  "tax",         precision: 12, scale: 2
     t.decimal  "shipping",    precision: 12, scale: 2
     t.decimal  "total",       precision: 12, scale: 2
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.index ["status_id"], name: "index_orders_on_status_id", using: :btree
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["statuses"], name: "index_orders_on_statuses", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
@@ -82,13 +82,6 @@ ActiveRecord::Schema.define(version: 20161102011041) do
     t.datetime "updated_at",                           null: false
     t.index ["brand_id"], name: "index_products_on_brand_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
-  end
-
-  create_table "statuses", force: :cascade do |t|
-    t.string   "name"
-    t.string   "bootstrap_class"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "units", force: :cascade do |t|

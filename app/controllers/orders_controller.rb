@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    current_order.update(status: Status::PENDING)
+    current_order.next_state
     redirect_to cart_path
   end
 end
