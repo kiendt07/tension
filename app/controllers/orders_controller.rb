@@ -21,18 +21,23 @@ class OrdersController < ApplicationController
 
   def update
     if current_order.in_progress?
-      current_order.next_state
-      session[:order_id] = nil
-      flash.now[:success] = 'Successfull place order!'
-      # TODO redirect_to receipt
-      if current_order.statuses == 'pending'
-        redirect_to cart_path
-      else
-        redirect_to orders_path
-      end
-    else
-      flash.now[:notice] = 'You cannot do that!'
+      # TODO checkout
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+
+      Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => (current_order.calculate_total * 100).to_i,
+        :description => 'Rails Stripe customer',
+        :currency    => 'usd'
+      )
+      checkout_to_next_state
     end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to cart_path
   end
 
   def destroy
@@ -43,5 +48,14 @@ class OrdersController < ApplicationController
       flash[:error] = 'Cannot cancer'
     end
     redirect_to products_path
+  end
+
+  private
+
+  def checkout_to_next_state
+    current_order.next_state
+    session[:order_id] = nil
+    flash.now[:success] = 'Successfull place order!'
+    redirect_to orders_path
   end
 end

@@ -21,28 +21,37 @@
           <tr style="font-size: 16px; font-weight: bold" class="alert alert-success">
             <td></td>
             <td>Total</td><td></td>
-            <td><%= @order.total %></td>
+            <td>
+              <%= number_to_currency(@order.calculate_total, unit: 'USD', precision: 2) %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-  <% else %>
   <% end %>
 
   <div class="cart-function" style="text-align: center">
     <% status_in_int = Order.statuses[@order.statuses] %>
     <% if @order.id.present? %>
-      <% if status_in_int == Order.statuses['in_progress'] %>
-        <%= link_to 'Place', order_path(@order), method: 'patch', class: "btn btn-success"%>
+      <%= form_for @order do |f| %>
+        <% if status_in_int == Order.statuses['in_progress'] %>
+        <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="<%= @order.calculate_total * 100 %>"
+            data-currency="usd"
+        ></script>
+        <% end %>
+        <%= link_to 'Cancer', order_path(@order), method: 'delete', class: 'btn btn-warning' %>
       <% end %>
-      <%= link_to 'Cancer', order_path(@order), method: 'delete', class: 'btn btn-warning' %>
     <% else %>
       <p class="alert alert-warning" style="font-size: 16px;">
         Empty cart!
       </p>
-      <div style="text-align: center">
-        <%= link_to 'See all receipts', orders_path, class: 'btn btn-success' %>
-      </div>
     <% end %>
+  </div>
+  <div style="text-align: center; margin-top: 20px">
+    <%= link_to 'See all receipts', orders_path, style: 'color: blue;' %>
   </div>
 </div>

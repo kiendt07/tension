@@ -15,7 +15,7 @@
       <% @orders.each_with_index do |order, index| %>
         <tr>
           <td><%= index %></td>
-          <td><%= order.total || 0 %></td>
+          <td><%= number_to_currency(order.calculate_total, unit: 'USD ', precision: 2) || 0 %></td>
           <td><%= order.updated_at %></td>
 
           <% status_in_int = Order.statuses[order.statuses] %>

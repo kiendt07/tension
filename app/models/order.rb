@@ -8,14 +8,20 @@ class Order < ApplicationRecord
 
   # Update subtotal of an receipt after saving.
   before_save :update_subtotal
-  def subtotal
+  def update_subtotal
+    self.subtotal = calculate_total
+    self.total = self.subtotal
+    self.save!
+  end
+
+  def calculate_total
     result = 0;
     order_lines.each do |ol|
       result += ol.unit.price
     end
-    self.subtotal = result
-    self.total = result
-    self.save!
+    self.subtotal = result;
+    self.total = result;
+    return result
   end
 
   # Sync status of an order (stored in database) with state attribute (stored in memory)
@@ -48,7 +54,6 @@ class Order < ApplicationRecord
   # Create new order like a cart, user can continue shopping, so the status is In progress
   def set_initial_status
     # self.status = Status::INPROGRESS
-    raise 'asjdlfs'
   end
 
   def update_subtotal
