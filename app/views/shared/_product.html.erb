@@ -1,4 +1,4 @@
-<div class="col-sm-6 product">
+<div class="col-sm-6">
   <%= image_tag product.img_set[0], style: 'width: 100%' %>
 </div>
 <div class="col-sm-6 product-detail">
@@ -24,11 +24,14 @@
     </span>
   </p>
 
+  <!-- If the product has unit of this color and size -->
   <% if unit %>
     <p class="product-quantity">available</p>
   <% else %>
-    <p class="product-quantity">not available</p>
+    <p class="product-quantity alert-danger">not available</p>
   <% end %>
+
+  <!-- Small image of the product -->
   <div class="product-images">
     <% product.img_set.each do |img| %>
       <%= image_tag img, style: 'height: 200px' %>
@@ -42,7 +45,7 @@
         <%= number_field_tag :quantity, default_quantity ,class: 'form-control form-group' %>
         <%= hidden_field_tag 'unit_id', unit.id %>
       <% end %>
-      <%= submit_tag 'Add to cart', class: "btn btn-primary #{'btn-danger disabled' if unit.nil?}" %>
+      <%= submit_tag 'Add to cart', class: "btn btn-primary", style: "#{'display: none' if unit.nil?}" %>
     <% end %>
   </div>
 </div>

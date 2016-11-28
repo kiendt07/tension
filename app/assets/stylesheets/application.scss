@@ -70,7 +70,7 @@ a:hover {
   top: 40px;
   right: 0;
   z-index: 99999;
-  width: 100px;
+  width: 200px;
 }
 
 .user-function a {
@@ -156,12 +156,11 @@ a:hover {
 }
 
 .products {
-
+  margin-top: 30px;
 }
 
 .product {
-  padding-right: 0px;
-  padding-left: 0px;
+  margin: 0px 20px;
 }
 
 .product-detail {

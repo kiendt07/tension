@@ -9,6 +9,13 @@ class Order < ApplicationRecord
   # Update subtotal of an receipt after saving.
   before_save :update_subtotal
   def subtotal
+    result = 0;
+    order_lines.each do |ol|
+      result += ol.unit.price
+    end
+    self.subtotal = result
+    self.total = result
+    self.save!
   end
 
   # Sync status of an order (stored in database) with state attribute (stored in memory)
@@ -30,6 +37,10 @@ class Order < ApplicationRecord
   def next_state
     puts @state
     @state.next(self)
+  end
+
+  def cancer
+    @state.cancer(self)
   end
 
   private

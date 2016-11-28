@@ -1,0 +1,30 @@
+<div class="container">
+  <br><br>
+  <h1 style="text-align: center">Order list</h1>
+  <br><br>
+  <table class="table table-striped table-hover">
+    <thead style="text-align: center">
+      <tr>
+        <th>#</th>
+        <th>Total</th>
+        <th>Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each_with_index do |order, index| %>
+        <tr>
+          <td><%= index %></td>
+          <td><%= order.total || 0 %></td>
+          <td><%= order.updated_at %></td>
+
+          <% status_in_int = Order.statuses[order.statuses] %>
+          <td class="bg-<%= State::BOOTSTRAP_CLASS[status_in_int] %> text-white" style="text-align: center">
+            <%= order.statuses %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

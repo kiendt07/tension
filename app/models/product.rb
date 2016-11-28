@@ -11,4 +11,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   # default_scope { where(available: true) }
+
+  def available_unit
+    units.order(quantity: :desc).first
+  end
 end
