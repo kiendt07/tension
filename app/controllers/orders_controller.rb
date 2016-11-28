@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
   def checkout_to_next_state
     current_order.next_state
     session[:order_id] = nil
-    flash.now[:success] = 'Successfull place order!'
+    flash[:success] = 'Successfull place order!'
     redirect_to orders_path
   end
 end
