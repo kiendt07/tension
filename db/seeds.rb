@@ -16,7 +16,7 @@ end
 
 Product.create(
   name: 'MARBLE JACKET',
-  price: 2499000.00,
+  price: 99.99,
   size_set: ['L', 'XL'],
   color_set: ['Light grey', 'Black'],
   img_set: ['jacket_11.jpg', 'jacket_12.jpg', 'jacket_13.jpg'],
@@ -30,13 +30,13 @@ Unit.create(
   color: 'Light grey',
   quantity: 5,
   available: true,
-  price: 2499000.00
+  price: 149.99
 )
 
 
 Product.create(
   name: 'MILITARY STYLE COAT',
-  price: 4499000.00,
+  price: 129.99,
   size_set: ['L', 'XL'],
   color_set: ['Light grey', 'Black'],
   img_set: ['outer_1.jpg', 'outer_2.jpg', 'outer_13.jpg'],
@@ -46,7 +46,7 @@ Product.create(
 
 Product.create(
   name: 'PARKA WITH FAUX FUR HOOD',
-  price: 3499000.00,
+  price: 199.99,
   size_set: ['L', 'XL', 'XXL'],
   color_set: ['Black'],
   img_set: ['outer_21.jpg', 'outer_22.jpg', 'outer_23.jpg'],
@@ -56,7 +56,7 @@ Product.create(
 
 Product.create(
   name: 'QUILTED FEATHER DOWN COAT',
-  price: 2499000.00,
+  price: 199.99,
   size_set: ['L', 'XL', 'XXL'],
   color_set: ['Black'],
   img_set: ['outer_31.jpg', 'outer_32.jpg', 'outer_33.jpg'],
@@ -66,7 +66,7 @@ Product.create(
 
 Product.create(
   name: 'Bomber jacket',
-  price: 1299000.00,
+  price: 199.99,
   size_set: ['L', 'XL', 'XXL'],
   color_set: ['Black'],
   img_set: ['bomber_1.jpg', 'bomber_2.jpg', 'bomber_3.jpg'],
@@ -76,7 +76,7 @@ Product.create(
 
 Product.create(
   name: 'BROWN LEATHER BOOT',
-  price: 1499000.00,
+  price: 199.99,
   size_set: ['30', '31', '32'],
   color_set: ['Brown'],
   img_set: ['shoes_11.jpg', 'shoes_12.jpg', 'shoes_13.jpg'],
@@ -102,9 +102,9 @@ Collection.create(
   product_set: ['1', '4', '5'],
 )
 
-Unit.create product: Product.first, color: 'Black', size: 'L', quantity: 10, price: 2499000.00
+Unit.create product: Product.first, color: 'Black', size: 'L', quantity: 10, price: 129.99
 
-Unit.create product: Product.last, color: 'Brown', size: '30', quantity: 10, price: 2499000.00
+Unit.create product: Product.last, color: 'Brown', size: '30', quantity: 10, price: 129.99
 
 # ['In Progress', 'Pending', 'Processing', 'Shipping', 'Received', 'Fullfilled', 'Canceled', 'Failed'].each do |s|
 #   Status.create(

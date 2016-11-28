@@ -1,18 +1,21 @@
 <div class="products">
-  <div class="row" style="width: 100%; margin: 0;">
+  <div class="row" style="width: 100%; margin: 0; padding-left: 10%;">
     <% products.each do |product| %>
-      <div class="col-sm-6 product">
-          <a href="<%= product_path(product) %>">
+      <% unit = product.available_unit %>
+      <% unit_path = unit.present? ? product_path(product, size: unit.size, color: unit.color) : product_path(product)  %>
+
+      <div class="col-sm-5 product">
+          <a href="<%= unit_path %>">
             <%= image_tag product.img_set[0], style: 'width: 100%' %>
           </a>
-
           <div class="card card-block" style="text-align: center">
-            <%= link_to product.name, product_path(product), class: 'product-name' %>
+            <%= link_to product.name, unit_path , class: 'product-name' %>
             <p class="product-price">
               <%= number_to_currency(product.price, unit: 'VND ', precision: 0) %>
             </p>
           </div>
       </div>
     <% end %>
+
   </div>
 </div>

@@ -1,24 +1,60 @@
 <div class="container cart">
-  <div style="text-align: center" class="bg-<%= @order.status.bootstrap_class %> text-white" style="width: 30%; font-size: 16px">
-    <%= @order.status.name %>
-  </div>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Product</th>
-        <th>Price</th>
-        <th>Quantity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @order.order_lines.each_with_index do |line, index| %>
-        <%= render partial: 'order_line', locals: {line: line, index: index} %>
-      <% end %>
-    </tbody>
-  </table>
+  <% if @order.id.present? %>
+    <% status_in_int = Order.statuses[@order.statuses] %>
+    <!-- class="bg-<%= State::BOOTSTRAP_CLASS[status_in_int] %> text-white" -->
+    <br><br>
+    <div style="text-align: center;">
+      <h2>Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+    </div>
+    <br>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_lines.each_with_index do |line, index| %>
+          <%= render partial: 'order_line', locals: {line: line, index: index} %>
+        <% end %>
+        <% if @order.id.present? %>
+          <tr style="font-size: 16px; font-weight: bold" class="alert alert-success">
+            <td></td>
+            <td>Total</td><td></td>
+            <td>
+              <%= number_to_currency(@order.calculate_total, unit: 'USD', precision: 2) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
   <div class="cart-function" style="text-align: center">
-    <%= link_to 'Place order', order_path(@order), method: 'patch', class: 'btn btn-success' %>
+    <% status_in_int = Order.statuses[@order.statuses] %>
+    <% if @order.id.present? %>
+      <%= form_for @order do |f| %>
+        <% if status_in_int == Order.statuses['in_progress'] %>
+        <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="<%= @order.calculate_total * 100 %>"
+            data-currency="usd"
+        ></script>
+        <% end %>
+        <%= link_to 'Cancer', order_path(@order), method: 'delete', class: 'btn btn-warning' %>
+      <% end %>
+    <% else %>
+      <p class="alert alert-warning" style="font-size: 16px;">
+        Empty cart!
+      </p>
+    <% end %>
+  </div>
+  <div style="text-align: center; margin-top: 20px">
+    <%= link_to 'See all receipts', orders_path, style: 'color: blue;' %>
   </div>
 </div>

@@ -24,10 +24,10 @@
       </h1>
       <div class="user-function">
         <% if user_signed_in? %>
-          <h3 class="cart-info">
+          <h3 class="cart-info" style="display: inline">
             <%= render 'shared/cart_info' %>
           </h3>
-          <%= link_to 'Log out', logout_path, class: 'nav-link' %>
+          <%= link_to 'Log out', logout_path, class: 'nav-link', style: "display: inline" %>
         <% else %>
           <%= link_to 'Log in', new_user_session_path, class: 'nav-link' %>
         <% end %>
@@ -37,19 +37,16 @@
     <% unless
          current_page?(new_user_session_path) or
          current_page?(new_user_registration_path) or
-         current_page?(cart_path)
+         current_page?(cart_path) or
+         current_page?(orders_path) or
+         current_page?(order_path(1))
        then
     %>
       <div class="container-nav">
         <nav id="menu">
           <ul>
-            <% Collection.all.each do |c| %>
-              <li class="category-link">
-                <%= link_to c.name, collection_path(c), class: "big-link pure #{ current_class?(collection_path(c))}" %>
-              </li>
-            <% end %>
             <li class="category-link">
-              <%= link_to 'Browse', products_path, class: "big-link pure #{ current_class?(products_path) }" %>
+              <%= link_to 'Browse all', products_path, class: "big-link pure #{ current_class?(products_path) }" %>
               <% if current_page?(products_path) %>
                 <ul style="padding-left: 20px;">
                   <% Category.all.each do |c| %>
@@ -60,6 +57,11 @@
                 </ul>
               <% end %>
             </li>
+            <% Collection.all.each do |c| %>
+              <li class="category-link">
+                <%= link_to c.name, collection_path(c), class: "big-link pure #{ current_class?(collection_path(c))}" %>
+              </li>
+            <% end %>
           </ul>
         </nav>
       </div>

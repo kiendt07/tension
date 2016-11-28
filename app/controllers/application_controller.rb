@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else
-      Order.new status: Status::INPROGRESS, user: current_user
+      current_user.in_progress_order || Order.new(user: current_user)
     end
   end
 end

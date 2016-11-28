@@ -4,7 +4,7 @@
     <%= link_to line.unit.product.name, product_path(line.unit.product, size: line.unit.size, color: line.unit.color), class: 'product-name' %>
   </td>
   <td class="product-price">
-    <%= number_to_currency(line.unit.price, unit: 'VND ', precision: 0) %>
+    <%= number_to_currency(line.unit.price, unit: 'USD ', precision: 2) %>
   </td>
   <td><%= line.quantity %></td>
 </tr>

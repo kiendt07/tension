@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :collections, only: [:show]
+  resources :collections, only: [ :show ]
 
-  resources :order_lines, only: [:create, :update, :destroy]
+  resources :order_lines, only: [ :create, :update, :destroy ]
 
-  resources :orders, only: [:update]
+  resources :orders, only: [ :index, :show, :update, :destroy ]
 
   get 'cart' => 'orders#cart'
   get 'logout' => 'orders#logout'
