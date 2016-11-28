@@ -4,7 +4,12 @@ class OrderLinesController < ApplicationController
   def create
     @order = current_order
     @order_line = @order.order_lines.build order_line_params
-    @order.save
+    if @order.save
+      flash.now[:success] = "Added #{ @order_line.unit.product.name } to cart"
+      puts 'OKJLKAJFLKJAKFKLD'
+    else
+      flash.now[:warning] = 'Cannot add this product to cart!'
+    end
     session[:order_id] = @order.id
   end
 

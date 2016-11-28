@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @order.order_lines.each do |line| %>
-        <%= render partial: 'order_line', locals: {line: line} %>
+      <% @order.order_lines.each_with_index do |line, index| %>
+        <%= render partial: 'order_line', locals: {line: line, index: index} %>
       <% end %>
     </tbody>
   </table>

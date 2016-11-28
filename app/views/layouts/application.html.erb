@@ -17,9 +17,10 @@
 
   <body>
     <div class="container-fluid header">
-      <h1 class="title" style="text-align:center">
-        <!-- <%= link_to 'Tension', root_path, class: 'pure' %> -->
-        Tension
+      <h1 style="text-align: center">
+        <a href="<%= root_path %>" class="title">
+          Tension
+        </a>
       </h1>
       <div class="user-function">
         <% if user_signed_in? %>
@@ -32,11 +33,6 @@
         <% end %>
       </div>
     </div>
-
-    <!-- <% if (!current_page?(new_user_session_path)) or (!current_page?(new_user_registration_path)) or (!current_page?(cart_path)) %>
-
-
-    <% end %> -->
 
     <% unless
          current_page?(new_user_session_path) or
@@ -70,6 +66,7 @@
     <% end %>
 
     <div class="content">
+      <%= flash_messages %>
       <%= yield %>
     </div>
   </body>

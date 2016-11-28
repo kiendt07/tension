@@ -1,4 +1,4 @@
-<tr>
+<tr id="orderline-<%= index %>">
   <td><%= line.unit.product.id %></td>
   <td>
     <%= link_to line.unit.product.name, product_path(line.unit.product, size: line.unit.size, color: line.unit.color), class: 'product-name' %>
