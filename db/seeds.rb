@@ -106,6 +106,8 @@ Unit.create product: Product.first, color: 'Black', size: 'L', quantity: 10, pri
 
 Unit.create product: Product.last, color: 'Brown', size: '30', quantity: 10, price: 129.99
 
+User.create email: 'admin@example.com', password: '123456', role: 1
+
 # ['In Progress', 'Pending', 'Processing', 'Shipping', 'Received', 'Fullfilled', 'Canceled', 'Failed'].each do |s|
 #   Status.create(
 #     name: s,

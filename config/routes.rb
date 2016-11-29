@@ -14,6 +14,10 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :index, :show, :update, :destroy ]
 
+  namespace :admin do
+    resources :users
+  end
+
   get 'cart' => 'orders#cart'
   get 'logout' => 'orders#logout'
   root 'pages#index'
