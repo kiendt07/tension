@@ -43,9 +43,9 @@ class OrdersController < ApplicationController
   def destroy
     if current_order.cancer
       session[:order_id] = nil
-      flash[:success] = 'Successfully cancer!'
+      flash[:success] = 'Successfully cancel!'
     else
-      flash[:error] = 'Cannot cancer'
+      flash[:error] = 'Cannot cancel'
     end
     redirect_to products_path
   end

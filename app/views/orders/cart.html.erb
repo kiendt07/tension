@@ -41,12 +41,12 @@
         <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="A month's subscription"
+            data-description="Tension checkout"
             data-amount="<%= @order.calculate_total * 100 %>"
             data-currency="usd"
         ></script>
         <% end %>
-        <%= link_to 'Cancer', order_path(@order), method: 'delete', class: 'btn btn-warning' %>
+        <%= link_to 'Cancel', order_path(@order), method: 'delete', class: 'btn btn-warning' %>
       <% end %>
     <% else %>
       <p class="alert alert-warning" style="font-size: 16px;">
