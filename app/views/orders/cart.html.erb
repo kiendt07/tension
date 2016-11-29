@@ -25,7 +25,7 @@
             <td></td>
             <td>Total</td><td></td>
             <td>
-              <%= number_to_currency(@order.calculate_total, unit: 'USD', precision: 2) %>
+              <%= number_to_currency(@order.calculate_total, unit: '$ ', precision: 2) %>
             </td>
           </tr>
         <% end %>

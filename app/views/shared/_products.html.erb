@@ -11,7 +11,7 @@
           <div class="card card-block" style="text-align: center">
             <%= link_to product.name, unit_path , class: 'product-name' %>
             <p class="product-price">
-              <%= number_to_currency(product.price, unit: 'VND ', precision: 0) %>
+              <%= number_to_currency(product.price, unit: '$ ', precision: 2) %>
             </p>
           </div>
       </div>

@@ -4,7 +4,7 @@
 <div class="col-sm-6 product-detail">
   <h3 class="product-name"><%= product.name %></h3>
   <% if unit %>
-    <p class="product-price"><%= number_to_currency(unit.price, unit: 'USD ', precision: 2) %></p>
+    <p class="product-price"><%= number_to_currency(unit.price, unit: '$ ', precision: 2) %></p>
   <% else %>
     <p class="product-price">0</p>
   <% end %>

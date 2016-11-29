@@ -1,9 +1,10 @@
-class ProductsController < ApplicationController
+class ProductsController < ApplicationController  
   def index
     @products = Product.all
     if params[:category]
       @products = @products.where('id = ?', params[:category])
     end
+    @products = @products.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show

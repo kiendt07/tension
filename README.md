@@ -11,9 +11,9 @@ In the console: `bundle exec guard` to automatically run test every changes.
 
 ### Sprint 1
 
-* [ ] User can sign in / register new account by Email/Facebook
-* [ ] User can see all products of the website with paginator, on the homepage
-* [ ] User can browse through categories and collections on the homepage by clicking on each of them.
+* [*] User can sign in / register new account by Email
+* [*] User can see all products of the website with paginator, on the homepage
+* [*] User can browse through categories and collections on the homepage by clicking on each of them.
 * [ ] User can see details about a product by clicking on it. Details about a product are photos, size, color, description, price.
 * [ ] Admin can CRUD users.
 
