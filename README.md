@@ -5,6 +5,19 @@
 2. `rails db:create`
 3. `rails db:migrate`
 4. `rails db:seed`
+5. Run Rails server with setting Stripe API key:
+  `PUBLISHABLE_KEY=pk_test_6pRNASCoBOKtIshFeQd4XMUh \
+   SECRET_KEY=sk_test_BQokikJOvBiI2HlWgH4olfQ2 rails s`
+   _**Or just test on the demo site**_: [Tension](http://tension-sp.herokuapp.com)
+
+# Stripe payment processes
+1. After going to the cart, click on the `Pay with Card` button
+2. A checkout model will raise up with some fields. Input sample data to test:
+  * Email: _whatever random email for billing_
+  * Card number: **4242 4242 4242 4242**
+  * MM/YY: **12/24**
+  * CVC: **123**
+3. Click `Pay`. If success, it will automatically redirect to all orders with current status.
 
 ## Run test
 In the console: `bundle exec guard` to automatically run test every changes.
