@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @products = Product.search(params[:q])
-    render :index, objects: @products.paginate(:page => params[:page], :per_page => 10)
+    @products = Product.search(params[:q]).paginate(:page => params[:page], :per_page => 10)
+    render :index, objects: @products
   end
 end
