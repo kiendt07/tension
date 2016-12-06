@@ -24,12 +24,15 @@
       </h1>
       <div class="user-function">
         <div id="SearchBar" class="search-box btn-group">
-      		<%= form_tag search_path, method: 'post' do %>
-            <!-- <input type="text" oninput="OnInput()" class="search-field" placeholder="Search" name="q"/>
-            <span class="clear-icon glyphicon glyphicon-remove"></span> -->
-            <%= text_field_tag :q, nil, placeholder: 'Search' %>
-            <%= submit_tag 'search' %>
-          <% end %>
+
+          <div id="custom-search-input">
+            <%= form_tag search_path, method: 'post' do %>
+              <!-- <input type="text" oninput="OnInput()" class="search-field" placeholder="Search" name="q"/>
+              <span class="clear-icon glyphicon glyphicon-remove"></span> -->
+              <%= text_field_tag :q, params[:q], placeholder: 'Search', class: 'form-control', style: 'width: 150px; margin-right: 10px;' %>
+            <% end %>
+
+            </div>
       	</div>
         <% if user_signed_in? %>
           <h3 class="cart-info" style="display: inline">
