@@ -21,18 +21,7 @@ class OrdersController < ApplicationController
 
   def update
     if current_order.in_progress?
-      # TODO checkout
-      customer = Stripe::Customer.create(
-        :email => params[:stripeEmail],
-        :source  => params[:stripeToken]
-      )
-
-      Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => (current_order.calculate_total * 100).to_i,
-        :description => 'Rails Stripe customer',
-        :currency    => 'usd'
-      )
+      create_stripe_payment
       checkout_to_next_state
     end
   rescue Stripe::CardError => e
@@ -57,5 +46,18 @@ class OrdersController < ApplicationController
     session[:order_id] = nil
     flash[:success] = 'Successfull place order!'
     redirect_to orders_path
+  end
+
+  def create_stripe_payment
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+    Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => (current_order.calculate_total * 100).to_i,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
   end
 end

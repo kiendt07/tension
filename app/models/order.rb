@@ -1,12 +1,11 @@
 class Order < ApplicationRecord
   belongs_to :payment, optional: true
   belongs_to :user
-
   has_many :order_lines
 
-  enum statuses: [ :in_progress, :pending, :processing ]
+  enum statuses: [ :in_progress, :pending, :processing, :shipping, :received, :fullfilled, :canceled, :failed ]
 
-  # Update subtotal of an receipt after saving.
+  # Update subtotal after saving.
   before_save :update_subtotal
   def update_subtotal
     self.subtotal = calculate_total
@@ -14,6 +13,7 @@ class Order < ApplicationRecord
     self.save!
   end
 
+  # Calculate total fee
   def calculate_total
     result = 0;
     order_lines.each do |ol|
