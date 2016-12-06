@@ -33,6 +33,7 @@ In the console: `bundle exec guard` to automatically run test every changes.
 * [x] User can browse through categories and collections on the homepage by clicking on each of them.
 * [x] User can see details about a product by clicking on it. Details about a product are photos, size, color, description, price.
 * [x] Admin can CRUD users.
+* [x] **New** User can search for a product by product name + size + color.
 
 ### Sprint 2
 * [ ] Photos of a product are clickable, and zoomed when user click on a photo.
