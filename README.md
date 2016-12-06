@@ -6,9 +6,11 @@
 3. `rails db:migrate`
 4. `rails db:seed`
 5. Run Rails server, replace the PUBLISHABLE_KEY and SECRET_KEY with your own Stripe API key:
-  `PUBLISHABLE_KEY=pk_test_6pRNASCoBOKtIshFeQd4XMUh \
-   SECRET_KEY=sk_test_BQokikJOvBiI2HlWgH4olfQ2 rails s`
-   _**Or just test on the demo site**_: [Tension](http://tension-sp.herokuapp.com)
+  ```
+  PUBLISHABLE_KEY=pk_test_6pRNASCoBOKtIshFeQd4XMUh \
+  SECRET_KEY=sk_test_BQokikJOvBiI2HlWgH4olfQ2 rails s
+  ```
+  _**Or just test on the demo site**_: [Tension](http://tension-sp.herokuapp.com)
 
 # Stripe payment processes
 1. After going to the cart, click on the `Pay with Card` button
