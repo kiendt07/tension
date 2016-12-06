@@ -1,2 +1,20 @@
-OK
-sdfjalskdfjlasdfj
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Created at</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <td><%= link_to 'Destroy', user_path(user), method: 'delete',  class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
