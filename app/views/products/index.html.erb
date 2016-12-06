@@ -1,4 +1,4 @@
 <div class="container-fluid" style="padding: 0">
     <%= render partial: 'shared/products', locals: {products: @products} %>
-    <%= will_paginate @posts %>
+    <%# will_paginate @products if @products.length > 0 %>
 </div>

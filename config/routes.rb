@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  post 'search' => 'products#search'
   get 'cart' => 'orders#cart'
   get 'logout' => 'orders#logout'
   root 'pages#index'

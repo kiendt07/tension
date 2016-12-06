@@ -70,7 +70,7 @@ a:hover {
   top: 40px;
   right: 0;
   z-index: 99999;
-  width: 200px;
+  width: 100px;
 }
 
 .user-function a {
@@ -198,3 +198,111 @@ a.product-size.active {
 .place-order {
   margin-top: 20px;
 }
+
+
+
+
+
+// .search-box {
+//   // float: right;
+//   // height: 32px;
+//   // width: 240px;
+//   display: block;
+//
+//   &.active {
+//     input {
+//       display: block;
+//     }
+//
+//     .search {
+//       background-position: center right;
+//       // background-color: #0477b7;
+//     }
+//
+//     .search-field {
+//       width: 208px;
+//       padding: 0 44px 0 16px;
+//       opacity: 1;
+//     }
+//   }
+// }
+//
+// input {
+//   height: 32px;
+//   font-size: 16px;
+//   line-height: 1.33;
+//   border-radius: 0;
+//   background: transparent;
+//   border: none;
+//
+//   &[type=text]::-ms-clear {
+//     height: 0;
+//     width: 0;
+//   }
+// }
+//
+// .search-field {
+//   width: 0;
+//   outline: none;
+//   color: #ffffff;
+//   float: right;
+//   opacity: 0;
+//   -webkit-transition: all .3s ease;
+//    -moz-transition: all .3s ease;
+//    transition: all .3s ease;
+//
+//   &::-webkit-input-placeholder {
+//     color: #BBE3F9;
+//   }
+// }
+//
+//
+// .clear-icon {
+//   color: #ffffff;
+//   position: absolute;
+//   top: 9px;
+//   right: 16px;
+//   width: 14px;
+//   height: 14px;
+//   cursor: pointer;
+//   display: none;
+//
+//   &.show {
+//     display: block;
+//   }
+// }
+//
+// .search {
+//   border-radius: 0;
+//   background: url('http://www.clker.com/cliparts/n/U/H/1/H/u/search-icon-white-one-md.png') no-repeat center left;
+//   background-size: 16px 16px;
+//   border: none;
+//   display: block;
+//   width: 32px;
+//   float: right;
+//   outline: none;
+//
+//   -webkit-transition: all .3s ease;
+//    -moz-transition: all .3s ease;
+//    transition: all .3s ease;
+// }
+//
+// .help,
+// .user {
+//   float: right;
+//   color: #ffffff;
+//   font-size: 14px;
+//   line-height: 32px;
+//   margin: 0 12px;
+//   cursor: pointer;
+//
+//   span {
+//     font-weight: normal;
+//     font-size: 10px;
+//     padding-left: 4px;
+//   }
+// }
+//
+// .content {
+//   color: #ffffff;
+// }

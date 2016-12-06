@@ -23,6 +23,14 @@
         </a>
       </h1>
       <div class="user-function">
+        <div id="SearchBar" class="search-box btn-group">
+      		<%= form_tag search_path, method: 'post' do %>
+            <!-- <input type="text" oninput="OnInput()" class="search-field" placeholder="Search" name="q"/>
+            <span class="clear-icon glyphicon glyphicon-remove"></span> -->
+            <%= text_field_tag :q, nil, placeholder: 'Search' %>
+            <%= submit_tag 'search' %>
+          <% end %>
+      	</div>
         <% if user_signed_in? %>
           <h3 class="cart-info" style="display: inline">
             <%= render 'shared/cart_info' %>
@@ -71,5 +79,48 @@
       <%= flash_messages %>
       <%= yield %>
     </div>
+
+    <script>
+    $(".search").click(function(){
+if(!$(".search-box").hasClass("active") || $(".search-field").val() == ''){
+ $(".search-box").addClass('active');$(".search-field").focus();
+ $(".clear-icon").click(function(){
+   ClearSearchField();
+   OnInput();
+ });
+ return false;
+
+} else {
+ $(".text").html("You were trying to search for: <br/>" + $(".search-field").val());
+ ClearSearchField();
+ $(".search-box").removeClass('active');
+ $(".clear-icon").removeClass("show");
+OnInput();
+}
+});
+
+function OnInput() {
+if(!$(".search-field").val() == '') {
+ $(".clear-icon").addClass("show");
+} else {
+ $(".clear-icon").removeClass("show");
+}
+}
+
+function ClearSearchField() {
+$(".search-field").val('');
+$(".search-field").focus();
+}
+
+$("html").click(function(e){
+if(!$(e.target).is('.search-field, .clear-icon, .search'))
+{
+ $(".search-field").focus();
+ ClearSearchField();
+ OnInput();
+ $(".search-box").removeClass('active');
+}
+});
+    </script>
   </body>
 </html>

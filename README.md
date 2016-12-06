@@ -1,4 +1,5 @@
 # TENSION - ASSP06
+**DEMO**: [Tension](http://tension-sp.herokuapp.com)
 
 ## Guide
 1. `bundle`
@@ -10,6 +11,7 @@
   PUBLISHABLE_KEY=pk_test_6pRNASCoBOKtIshFeQd4XMUh \
   SECRET_KEY=sk_test_BQokikJOvBiI2HlWgH4olfQ2 rails s
   ```
+
   _**Or just test on the demo site**_: [Tension](http://tension-sp.herokuapp.com)
 
 # Stripe payment processes
@@ -52,6 +54,3 @@ In the console: `bundle exec guard` to automatically run test every changes.
 * [ ] Admin will be notified when new order is coming.
 * [ ] User can type a `Coupon code` for discount.
 * [ ] Each order will be transfer to an amount of points, depend on total due. User will have discount if they reach an amount of points.
-
-### Docs
-[RSpec][https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs]
