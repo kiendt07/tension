@@ -41,7 +41,6 @@ class Order < ApplicationRecord
 
   # The way an order is processed depend on its state
   def next_state
-    puts @state
     @state.next(self)
   end
 
